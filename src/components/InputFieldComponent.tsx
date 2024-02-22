@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     label : {
         fontSize : 15,
         paddingLeft : 4,
+        fontFamily : 'Poppins-Medium',
     },
     inputField : {
         width : '100%',
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
         borderBottomWidth : 1,
         fontSize : 17,
         color : 'black',
+        fontFamily : 'Poppins-Medium',
     },
     container : {
         marginLeft : 40,

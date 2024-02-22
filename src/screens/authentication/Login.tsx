@@ -7,9 +7,14 @@ const Login = () => {
 
     const navigation = useNavigation();
 
-    const onPress = () => {
+    const onPressForgotPassword = () => {
         navigation.navigate('ForgotPassword', {});
     }
+
+    const onPressLogin = () => {
+        navigation.navigate('BatchBottomNav', {});
+    }
+
     return (
         <View style = {styles.container}>
             <Text style = {styles.loginLabel}>
@@ -20,12 +25,12 @@ const Login = () => {
             {/* <Text style = {styles.forgotLabel}>
                 Forgot Password?
             </Text> */}
-            <TouchableOpacity onPress = {onPress}>
+            <TouchableOpacity onPress = {onPressForgotPassword}>
                 <Text style = {styles.forgotLabel}>
                     Forgot Password?
                 </Text>
             </TouchableOpacity>
-            <ButtonComponent labelValue='Login' onPress = {onPress}/>
+            <ButtonComponent labelValue='Login' onPress = {onPressLogin}/>
         </View>
     );
 };
@@ -34,18 +39,19 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         justifyContent : 'center',
-        fontFamily : 'Poppins-Light',
         backgroundColor : 'white',
     },
     loginLabel : {
         fontSize : 36,
         textAlign : 'center',
         color : '#000000',
-        fontWeight : 'bold',
+        fontFamily : 'Poppins-Medium',
+
     },
     forgotLabel : {
         textAlign : 'center',
         paddingTop : 20,
+        fontFamily : 'Poppins-Regular',
     }
 })
 export default Login;
