@@ -1,26 +1,14 @@
-import React, { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { HomeStackNavigation } from "./src/navigation/AppNavigation";
-import SplashScreen from "./src/screens/SplashScreen";
-
+import React from 'react';
+import {Provider} from 'react-redux';
+import Main from './src/main';
+import { store } from './src/context/store';
 
 const App = () => {
-    const [splash, setSplash] = useState(true);
-   
-    setTimeout(()=>{setSplash(false)},3000);
-
-    if(splash)
-    {
-      return(
-        <SplashScreen />
-      )
-    } else {
-	return (
-		<NavigationContainer>
-			<HomeStackNavigation/>
-		</NavigationContainer>
-	);
-    }
+  return (
+<Provider store={store}>
+<Main />
+</Provider>
+  );
 };
-
+ 
 export default App;

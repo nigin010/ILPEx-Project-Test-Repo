@@ -1,4 +1,4 @@
-import api from "../../../network/api";
+import api from "../../../network/apidemo";
 
 interface ContentResponse {
     contentResp : any;

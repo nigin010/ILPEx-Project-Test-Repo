@@ -1,14 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Image, Text, View } from "react-native";
-import Login from "../screens/authentication/Login";
-import ForgotPassword from "../screens/authentication/ForgotPassword";
-import ResetPassword from "../screens/authentication/ResetPassword";
 import Trainees from "../screens/Batch/TraineeScreen/TraineeScreen";
 import Batches from "../screens/Batch/BatchScreen/BatchScreen";
 import Assessment from "../screens/Batch/AssessmentScreen/AssessmentScreen";
-import Splash from "../screens/SplashScreen";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const StackNav = createNativeStackNavigator();
@@ -17,27 +12,6 @@ const BottomNav = createBottomTabNavigator();
 export const  HomeStackNavigation = () => {
     return(
         <StackNav.Navigator>
-            <StackNav.Screen
-                name = "LoginScreen"
-                component = {Login}
-                options= {{
-                    headerShown : false,
-                }}
-            />
-            <StackNav.Screen
-                name = "ForgotPassword"
-                component = {ForgotPassword}
-                options = {{
-                    headerShown : false,
-                }}
-            />
-            <StackNav.Screen
-                name = "ResetPassword"
-                component ={ResetPassword}
-                options = {{
-                    headerShown : false,
-                }}
-            />
             <StackNav.Screen
                 name = 'BatchBottomNav'
                 component = {BatchBottomNav}
@@ -101,7 +75,19 @@ const BatchBottomNav = () => {
                     ),
                 }}
             />
+            {/* <BottomNav.Screen
+                name = 'Logout'
+                component = {Logout}
+                options={{
+                    tabBarLabel: 'Logout',
+                    headerShown: false,
+                    tabBarIcon: ({ color }) => (
+                      <MaterialCommunityIcons name="log-out" color={color} size={26} />
+                    ),
+                }}
+            /> */}
         </BottomNav.Navigator>
     );
 }
 
+export default HomeStackNavigation;

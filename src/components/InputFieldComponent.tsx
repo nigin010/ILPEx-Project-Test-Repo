@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
-type propsType = {labelValue : string, placeholder : string, visible : boolean}
+type propsType = {labelValue : string, placeholder : string, value : string, visible : boolean, onChangeText: (emailText: string) => void}
 const InputField = (props: propsType) => {
-    const {labelValue, placeholder, visible} = props;
+    const {labelValue, placeholder, visible, value, onChangeText} = props;
     return(
         <View>
             <View style = {styles.container}>
@@ -14,6 +14,8 @@ const InputField = (props: propsType) => {
                 style = {styles.inputField}
                 placeholder={placeholder}
                 secureTextEntry={visible}
+                value = {value}
+                onChangeText={onChangeText}
                 />
             </View>
         </View>

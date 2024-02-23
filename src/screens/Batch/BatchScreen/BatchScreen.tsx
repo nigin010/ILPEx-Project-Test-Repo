@@ -2,8 +2,21 @@ import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import BatchCardComponent from "../../../components/BatchCardComponent";
 import { getAllBatchAPI } from "./BatchAPIHook";
+import ButtonComponent from "../../../components/ButtonComponent";
+import { setStringItem } from "../../../utils/Utils";
+import Constants from "../../../utils/Constants";
+import { useDispatch } from "react-redux";
+import { userLogin } from "../../../context/userSlice";
+
 
 const Batches = () => {
+
+    const dispatch = useDispatch();
+
+    const onPressLogout = () =>{
+        setStringItem(Constants.IS_LOGIN, 'false');
+        dispatch(userLogin(false));
+    }
 
     const [AllBatchList, setAllBatchList] = useState<any[]>([]);
 
@@ -21,6 +34,7 @@ const Batches = () => {
     
     return (
         <View style = {styles.container}>
+            <ButtonComponent labelValue='Logout' onPress = {onPressLogout}/>
             <Text style={styles.containerHeading}>Batches</Text>
             <View style = {styles.innerContainer}>
                 <FlatList
