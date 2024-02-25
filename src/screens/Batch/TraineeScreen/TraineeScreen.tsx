@@ -22,7 +22,7 @@ const Trainees = () => {
     return (
         <View style = {styles.container}>
             <Text style={styles.containerHeading}>Trainees</Text>
-            <ScrollView>
+            {/* <ScrollView> */}
                 <View style = {styles.innerContainer}>
                 <TextInput
                     style={styles.input}
@@ -35,7 +35,7 @@ const Trainees = () => {
                         keyExtractor={item => item.id}
                     /> 
                 </View>
-            </ScrollView>
+            {/* </ScrollView> */}
         </View>
     );
 }

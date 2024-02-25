@@ -9,7 +9,7 @@ import AuthNavigation from './navigation/AuthNavigation';
 import SplashScreen from './screens/SplashScreen';
 
 const Main = () => {
-  const isLoggedIn = useSelector((state: any) => state.userReducer.isLoggedIn);
+  const isLoggedIn = useSelector((state: any) => state.userReducer.isLoggedIn); //To fetch data from the corresponding Reducer
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

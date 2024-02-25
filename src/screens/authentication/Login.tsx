@@ -6,10 +6,12 @@ import { useNavigation } from '@react-navigation/native';
 import loginUser from "./AuthenticationAPIHook";
 import { setStringItem } from "../../utils/Utils";
 import Constants from "../../utils/Constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../context/userSlice";
+import { userToken } from "../../context/tokenSlice";
 const Login = () => {
 
+    
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const onPressForgotPassword = () => {
@@ -27,12 +29,17 @@ const Login = () => {
     }
 
     const onPressLogin = async() => {
+
         try {
             const{success, statusCode, errorMessage, loginResp} = await loginUser({loginUsername, loginPassword});
             if(success === true)
             {
                 setStringItem(Constants.IS_LOGIN, 'true');
+                setStringItem(Constants.TOKEN, loginResp.token);
+                setStringItem(Constants.USERID, loginResp.userid);
                 dispatch(userLogin(true));
+                dispatch(userToken({token: loginResp.token,userid: loginResp.userid}))
+        
             }
             else
                 console.log("Bleh")
@@ -40,11 +47,6 @@ const Login = () => {
         {
             console.log(error);
         }
-
-        // console.log(loginUsername);
-        // console.log(loginPassword);
-        // loginUser({loginUsername, loginPassword});
-        // navigation.navigate('BatchBottomNav', {});
     }
 
     return (

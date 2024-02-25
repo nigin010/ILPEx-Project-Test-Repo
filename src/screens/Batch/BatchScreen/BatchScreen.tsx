@@ -5,10 +5,9 @@ import { getAllBatchAPI } from "./BatchAPIHook";
 import ButtonComponent from "../../../components/ButtonComponent";
 import { setStringItem } from "../../../utils/Utils";
 import Constants from "../../../utils/Constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../../context/userSlice";
-
-
+import { getItem } from "../../../utils/Utils";
 const Batches = () => {
 
     const dispatch = useDispatch();
@@ -32,6 +31,8 @@ const Batches = () => {
 		getBatches();
 	}, []);
     
+    const token = useSelector((state : any) => state.tokenReducer.token);
+    console.log("Token And User ID : ", token);
     return (
         <View style = {styles.container}>
             <ButtonComponent labelValue='Logout' onPress = {onPressLogout}/>

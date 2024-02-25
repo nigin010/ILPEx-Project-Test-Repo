@@ -1,3 +1,5 @@
 export default {
-    IS_LOGIN : 'ISLOGIN'
+    IS_LOGIN : 'ISLOGIN',
+    TOKEN : '',
+    USERID : '',
 }
