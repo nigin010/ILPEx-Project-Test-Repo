@@ -28,6 +28,9 @@ const Login = () => {
         setLoginPassword(passwordText);
     }
 
+    const [invalidCredentials, setInvalidCredentials] = useState(false);
+
+
     const onPressLogin = async() => {
 
         try {
@@ -39,14 +42,22 @@ const Login = () => {
                 setStringItem(Constants.USERID, loginResp.userid);
                 dispatch(userLogin(true));
                 dispatch(userToken({token: loginResp.token,userid: loginResp.userid}))
-        
+                setInvalidCredentials(false);
             }
             else
-                console.log("Bleh")
+            {
+                setInvalidCredentials(true);
+                
+            }
         } catch(error)
         {
             console.log(error);
         }
+    }
+
+    const renderInvalidLogin = () => {
+        if(invalidCredentials)
+            return <Text style = {styles.invalidCreds}>Invalid Username or Password</Text>
     }
 
     return (
@@ -74,6 +85,7 @@ const Login = () => {
                 </Text>
             </TouchableOpacity>
             <ButtonComponent labelValue='Login' onPress = {onPressLogin}/>
+            {renderInvalidLogin()}
         </View>
     );
 };
@@ -94,6 +106,12 @@ const styles = StyleSheet.create({
     forgotLabel : {
         textAlign : 'center',
         paddingTop : 20,
+        fontFamily : 'Poppins-Regular',
+    },
+    invalidCreds : {
+        textAlign : 'center',
+        color : 'red',
+        paddingTop : 10,
         fontFamily : 'Poppins-Regular',
     }
 })
